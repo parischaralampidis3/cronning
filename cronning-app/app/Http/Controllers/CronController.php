@@ -18,7 +18,7 @@ class CronController extends Controller
 
     public function show($id){
         
-        $cron = Cron::findOrFail($id);
+        $cron = Cron::find($id);
         if(!$cron){
             return response()->json(['message'=>'Cron record not found'],404);
         }
@@ -31,6 +31,29 @@ class CronController extends Controller
             'title'=> 'required|max:255',
             'script' => 'required|max:255'
         ]);
+        $cron = Cron::create($request->all());
+        return response()->json(['cron' => $cron]);
     }
     
+    public function update(Request $request,$id){
+        $cron = Cron::find($id);
+        if(!$cron){
+            return response()->json(['messae'=>'Student not found'],404);
+        }
+       $request -> validate([
+            'title'=> 'required|max:255',
+            'script' => 'required|max:255'
+        ]);
+        $cron->update($request->all());
+        return response()->json(['cron' => $cron]);
+    }
+
+    public function destroy($id){
+        $cron = Cron::find($id);
+        if(!$cron){
+            return response()->json(['message' => 'Student not found'],404);
+        }  
+        $cron->delete();
+        return response()->json(['message' => 'Student is deleted']);
+    }
 }

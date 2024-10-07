@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cron extends Model
 {
+
     use HasFactory;
+
+    protected $table = 'cron';
     protected $fillable = ['title','script'];
 }

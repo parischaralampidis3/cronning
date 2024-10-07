@@ -6,10 +6,14 @@ use \App\Http\Controllers\CronController;
 Route::get('index',[CronController::class,'index'])->name('index');
 
 //show route
-Route::get('show/{cronner:id}',[CronController::class,'show'])->name('show');
+Route::get('show/{id}',[CronController::class,'show'])->name('show');
 
 //create route
-Route::get('store',[CronController::class,'create'])->name('create');;
+Route::post('store',[CronController::class,'store'])->name('store');;
 
-//store route
-Route::post('store',[CronController::class,'store'])->name('store');
+//update route
+Route::put('update/{id}',[CronController::class,'update'])->name('update');
+
+//delete route
+
+Route::delete('destroy/{id}',[CronController::class,'destroy'])->name('destroy');
