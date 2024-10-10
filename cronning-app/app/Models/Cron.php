@@ -11,10 +11,10 @@ class Cron extends Model
 
     use HasFactory;
 
-    protected $table = 'cron';
-    protected $fillable = ['title','script'];
+    protected $table = 'crons';
+    protected $fillable = ['title','script','server_id'];
 
-    public function cron(){
-        return $this->belongsTo(Server::class);
+    public function crons(){
+        return $this->belongsTo(Server::class,'server_id');
     }
 }

@@ -29,10 +29,11 @@ class CronController extends Controller
     public function store(Request $request){
         $request -> validate([
             'title'=> 'required|max:255',
-            'script' => 'required|max:255'
+            'script' => 'required|max:255',
+            'server_id' => 'required|exists:servers,id',
         ]);
         $cron = Cron::create($request->all());
-        return response()->json(['cron' => $cron]);
+        return response()->json(['cron' => $cron],200);
     }
     
     public function update(Request $request,$id){

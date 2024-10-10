@@ -8,12 +8,12 @@ use App\Models\Cron;
 
 class Server extends Model
 {
-    protected $table = 'server';
+    protected $table = 'servers';
 
     protected $fillable = ['protocol', 'host', 'port', 'user', 'password', 'encryption', 'ssh_key_path','description', 'active','timeout','last_connected_at'];
 
-    public function cron(){
-     return $this->hasMany(Cron::class);
+    public function servers(){
+     return $this->hasMany(Cron::class,'server_id');
     }
 
     use HasFactory;

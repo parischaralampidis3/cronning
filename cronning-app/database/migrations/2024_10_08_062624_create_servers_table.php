@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('server', function (Blueprint $table) {
+        Schema::create('servers', function (Blueprint $table) {
             $table->id();
             $table->string('protocol');
             $table->string('host');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('server');
+        Schema::dropIfExists('servers');
     }
 };

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cron', function (Blueprint $table) {
+         Schema::create('crons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('server_id')->constrained('servers')->onDelete('cascade');
             $table->string('title');
             $table->text('script');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cron');
+        Schema::dropIfExists('crons');
     }
 };
