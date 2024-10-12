@@ -35,7 +35,6 @@ class CronController extends Controller
         $cron = Cron::create($request->all());
         return response()->json(['cron' => $cron],200);
     }
-    
     public function update(Request $request,$id){
         $cron = Cron::find($id);
         if(!$cron){

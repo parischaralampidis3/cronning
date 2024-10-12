@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Server;
+use App\Models\UserInput;
 
 class Cron extends Model
 {
@@ -16,5 +17,8 @@ class Cron extends Model
 
     public function crons(){
         return $this->belongsTo(Server::class,'server_id');
+    }
+    public function userInput(){
+        return $this->hasMany(UserInput::class,'cron_id');
     }
 }
