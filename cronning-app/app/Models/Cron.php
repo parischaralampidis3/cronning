@@ -13,7 +13,12 @@ class Cron extends Model
     use HasFactory;
 
     protected $table = 'crons';
-    protected $fillable = ['title','script','server_id'];
+    protected $fillable = [
+                        'title',
+                        'script',
+                        'server_id'
+                    ];
+
 
     public function crons(){
         return $this->belongsTo(Server::class,'server_id');
